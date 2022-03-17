@@ -22,6 +22,14 @@ namespace TempleTour.Controllers
         {
             return View();
         }
+        public IActionResult SignUpTime()
+        {
+            return View();
+        }
+        public IActionResult SignUpForm()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {

@@ -1,0 +1,22 @@
+﻿@{ 
+    ViewData["Title"] = "Sign Up";
+}
+@model TempleTour.Models.SignUpResponse
+
+<h1>Tour Sign Up</h1>
+
+<div>
+    <form>
+        <label asp-for="GroupName">Group Name: </label>
+        <input asp-for="GroupName" />
+        </br>
+        <label asp-for="GroupSize">Group Size: </label>
+        <input asp-for="GroupSize" />
+        </br>
+        <label asp-for="Email">Email: </label>
+        <input asp-for="Email" />
+        </br>
+        <label asp-for="Phone">Phone Number: </label>
+        <input asp-for="Phone" />
+    </form>
+</div>
