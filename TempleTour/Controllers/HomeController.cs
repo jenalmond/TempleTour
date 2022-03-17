@@ -26,7 +26,13 @@ namespace TempleTour.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult SignUpForm()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SignUpForm(SignUpResponse sur)
         {
             return View();
         }
