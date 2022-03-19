@@ -8,14 +8,28 @@ namespace TempleTour.Models
 {
     public class SignUpResponse
     {
+        [Key]
+        [Required]
+        public int GroupID { get; set; }
+
         [Required]
         public string GroupName { get; set; }
+
+        //max group size is 15
         [Required]
-        public byte GroupSize { get; set; }
+        [Range(0, 15)]
+        public int GroupSize { get; set; }
+
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
-        [Required]
+
+       //phone is not required
         [Phone]
         public string Phone { get; set; }
+
+        //foreign key relationship to appointment
+        public int TourID { get; set; }
+        public Appointment TourTime { get; set; }
     }
 }

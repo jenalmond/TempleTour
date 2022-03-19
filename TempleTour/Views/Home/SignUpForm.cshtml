@@ -6,17 +6,24 @@
 <h1>Tour Sign Up</h1>
 
 <div>
+    
     <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
         <label asp-for="GroupName">Group Name: </label>
         <input asp-for="GroupName" />
-        </br>
+        <br />
         <label asp-for="GroupSize">Group Size: </label>
         <input asp-for="GroupSize" />
-        </br>
+        <br />
         <label asp-for="Email">Email: </label>
         <input asp-for="Email" />
-        </br>
+        <br />
         <label asp-for="Phone">Phone Number: </label>
         <input asp-for="Phone" />
+        <br />
+        <div class="float-end">
+            <input type="submit" class="btn btn-primary" value="Complete Sign Up" />
+        </div>
+
     </form>
 </div>
