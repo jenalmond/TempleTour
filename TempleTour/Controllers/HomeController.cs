@@ -20,14 +20,13 @@ namespace TempleTour.Controllers
 
             dbContext = context;
         }
-        //private readonly ILogger<HomeController> _logger;
 
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
 
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Privacy()
         {
             return View();
         }
@@ -59,12 +58,6 @@ namespace TempleTour.Controllers
             if (ModelState.IsValid)
             {
                 dbContext.Add(sur);
-
-                //set appointment availability == to false
-                dbContext.appointments
-                    .Where(x => x.TourID == sur.Appointment.TourID);
-
-
                 dbContext.SaveChanges();
                 return View("Index");
             }
@@ -75,8 +68,6 @@ namespace TempleTour.Controllers
                 .ToList();
                 return View(sur);
             }
-
-
         }
 
         [HttpGet]
@@ -84,16 +75,40 @@ namespace TempleTour.Controllers
         {
             var appointments = dbContext.responses
                 .Include(x => x.Appointment)
-                .OrderBy(x => x.TourID)
                 .ToList();
             return View(appointments);
-
         }
 
 
-            public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult Edit(int groupid)
         {
-            return View();
+            ViewBag.majors = dbContext.appointments.ToList();
+            var appointment = dbContext.responses.Single(x => x.GroupID == groupid);
+            return View("SignUpForm", appointment);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(SignUpResponse updates)
+        {
+            dbContext.Update(updates);
+            dbContext.SaveChanges();
+            return RedirectToAction("Appointments");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int groupid)
+        {
+            var appointment = dbContext.responses.Single(x => x.GroupID == groupid);
+            return View(appointment);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(SignUpResponse delete)
+        {
+            dbContext.responses.Remove(delete);
+            dbContext.SaveChanges();
+            return RedirectToAction("Appointments");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
