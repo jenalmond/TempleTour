@@ -44,10 +44,10 @@ namespace TempleTour.Controllers
 
         //needs to pass appointment time to sign up form
         [HttpGet]
-        public IActionResult SignUpForm(int tourID)
+        public IActionResult SignUpForm(Appointment tour)
         {
-            ViewBag.reponses = dbContext.responses
-                .Include(x => x.TourTime)
+            ViewBag.appointments = dbContext.appointments
+                .Where(x => x.TourID == tour.TourID)
                 .ToList();
 
             return View();
@@ -56,27 +56,42 @@ namespace TempleTour.Controllers
         [HttpPost]
         public IActionResult SignUpForm(SignUpResponse sur)
         {
-            
-            return View();
+            if (ModelState.IsValid)
+            {
+                dbContext.Add(sur);
+
+                //set appointment availability == to false
+                dbContext.appointments
+                    .Where(x => x.TourID == sur.Appointment.TourID);
+
+
+                dbContext.SaveChanges();
+                return View("Index");
+            }
+            else
+            {
+                ViewBag.appointments = dbContext.appointments
+                .Where(x => x.TourID == sur.Appointment.TourID)
+                .ToList();
+                return View(sur);
+            }
+
 
         }
 
-        //[HttpGet]
-        //public IActionResult Edit(int applicationid)
-        //{
-        //    ViewBag.majors = dbContext.majors.ToList();
-        //    var application = dbContext.responses.Single(x => x.ApplicationID == applicationid);
-        //    return View("DatingApplication", application);
-        //}
-        //[HttpPost]
-        //public IActionResult Edit(ApplicationResponse updates)
-        //{
-        //    dbContext.Update(updates);
-        //    dbContext.SaveChanges();
-        //    return RedirectToAction("Waitlist");
-        //}
+        [HttpGet]
+        public IActionResult Appointments()
+        {
+            var appointments = dbContext.responses
+                .Include(x => x.Appointment)
+                .OrderBy(x => x.TourID)
+                .ToList();
+            return View(appointments);
 
-        public IActionResult Privacy()
+        }
+
+
+            public IActionResult Privacy()
         {
             return View();
         }

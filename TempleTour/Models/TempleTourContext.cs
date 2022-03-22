@@ -12,6 +12,8 @@ namespace TempleTour.Models
         public DbSet<SignUpResponse> responses { get; set; }
         public DbSet<Appointment> appointments { get; set; }
 
+        
+
         protected override void OnModelCreating(ModelBuilder mb)
         {
             mb.Entity<Appointment>().HasData(

@@ -26,11 +26,11 @@
                 <td>@x.GroupSize</td>
                 <td>@x.Email</td>
                 <td>@x.Phone</td>
-                <td>@x.TourTime</td>
+                <td>@x.Appointment.TourTime</td>
                 
 
-                <td><a asp-controller="Home" asp-action="Edit" asp-route-groupid="@x.GroupID">Edit</a></td>
-                <td><a asp-controller="Home" asp-action="Delete" asp-route-groupid="@x.GroupID">Delete</a></td>
+                @*<td><a asp-controller="Home" asp-action="Edit" asp-route-groupid="@x.GroupID">Edit</a></td>
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-groupid="@x.GroupID">Delete</a></td>*@
             </tr>
         }
 

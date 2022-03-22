@@ -9,6 +9,20 @@
     
     <form method="post">
         <div asp-validation-summary="All" class="text-danger"></div>
+        <label asp-for="Appointment">Tour Time: </label>
+
+        @foreach (Appointment b in ViewBag.appointments)
+        {
+            <select asp-for="Appointment">
+                <option value="@b.TourID">@b.TourTime</option>
+            </select>
+            @*<input asp-for="@b.Available" type="hidden" value="false" />*@
+        }
+
+
+
+        @*how do I show the tour time? I don't know lol*@
+        <br />
         <label asp-for="GroupName">Group Name: </label>
         <input asp-for="GroupName" />
         <br />
@@ -21,9 +35,7 @@
         <label asp-for="Phone">Phone Number: </label>
         <input asp-for="Phone" />
         <br />
-        <div class="float-end">
-            <input type="submit" class="btn btn-primary" value="Complete Sign Up" />
-        </div>
+        <button type="submit">Submit Application</button>
 
     </form>
 </div>

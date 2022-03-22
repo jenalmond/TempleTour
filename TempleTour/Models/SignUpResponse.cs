@@ -30,6 +30,6 @@ namespace TempleTour.Models
 
         //foreign key relationship to appointment
         public int TourID { get; set; }
-        public Appointment TourTime { get; set; }
+        public Appointment Appointment { get; set; } 
     }
 }
