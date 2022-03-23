@@ -21,17 +21,16 @@
     <tbody>
         @foreach (var x in Model)
         {
-            <tr>
-                <td>@x.GroupName</td>
-                <td>@x.GroupSize</td>
-                <td>@x.Email</td>
-                <td>@x.Phone</td>
-                <td>@x.Appointment.TourTime</td>
-                
+        <tr>
+            <td>@x.GroupName</td>
+            <td>@x.GroupSize</td>
+            <td>@x.Email</td>
+            <td>@x.Phone</td>
+            <td></td>
 
-                <td><a asp-controller="Home" asp-action="Edit" asp-route-groupid="@x.GroupID">Edit</a></td>
-                <td><a asp-controller="Home" asp-action="Delete" asp-route-groupid="@x.GroupID">Delete</a></td>
-            </tr>
+            <td><a asp-controller="Home" asp-action="Edit" asp-route-groupid="@x.GroupID">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete" asp-route-groupid="@x.GroupID">Delete</a></td>
+        </tr>
         }
 
     </tbody>

@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    <header>
+        <div class="bg-dark text-white p-2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col navbar-brand">Temple Tours</div>
+                    <div class="col-6 text-right">
+                        <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="SignUpTime">Make an Appointment</a>
+                        <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="Appointments">View Appointments</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <div>
     @RenderBody()
     </div>

@@ -57,6 +57,8 @@ namespace TempleTour.Controllers
         {
             if (ModelState.IsValid)
             {
+                Appointment a = dbContext.appointments.FirstOrDefault(x => x.TourID == sur.TourID);
+                a.Available = false;
                 dbContext.Add(sur);
                 dbContext.SaveChanges();
                 return View("Index");
@@ -83,7 +85,7 @@ namespace TempleTour.Controllers
         [HttpGet]
         public IActionResult Edit(int groupid)
         {
-            ViewBag.majors = dbContext.appointments.ToList();
+            ViewBag.appointments = dbContext.appointments.ToList();
             var appointment = dbContext.responses.Single(x => x.GroupID == groupid);
             return View("SignUpForm", appointment);
         }

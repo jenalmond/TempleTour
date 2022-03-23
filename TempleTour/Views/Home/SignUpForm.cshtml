@@ -11,13 +11,15 @@
         <div asp-validation-summary="All" class="text-danger"></div>
         <label asp-for="Appointment">Tour Time: </label>
 
-        @foreach (Appointment b in ViewBag.appointments)
-        {
-            <select asp-for="Appointment">
+        
+        <select asp-for="Appointment">
+            @foreach (Appointment b in ViewBag.appointments)
+            {
                 <option value="@b.TourID">@b.TourTime</option>
+            }
             </select>
             @*<input asp-for="@b.Available" type="hidden" value="false" />*@
-        }
+        
 
 
 

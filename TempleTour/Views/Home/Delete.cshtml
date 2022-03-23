@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Delete Appointment";
+}
+
+@model SignUpResponse
+
+<h2>Confirm Deletion</h2>
+<h3>Are you sure you want to delete the record for @Model.GroupName?</h3>
+
+<!--Confirm deletion form-->
+<form method="post" asp-controller="Home" asp-action="Delete">
+    <a asp-controller="Home" asp-action="Appointments" class="btn btn-primary">Cancel</a>
+    <button class="btn btn-danger"type="submit">Delete</button>
+    <input type="hidden" asp-for="GroupID" />
+</form>

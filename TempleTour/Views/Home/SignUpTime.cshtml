@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "View Available Times";
 }
+
 @model List<Appointment>
 <h4>Sign up for a time to tour the temple!</h4>
 
@@ -18,16 +19,12 @@
     <tbody>
         @foreach (var x in Model)
         {
-            @if (x.Available == true)
-            {
-                <tr>
-                    <td>@x.TourTime</td>
+            <tr>
+                <td>@x.TourTime</td>
 
-                    <td><a asp-controller="Home" asp-action="SignUpForm" asp-route-tourid="@x.TourID">Sign Up</a></td>
-                </tr>
-            }
-        }
-
+                <td><a asp-controller="Home" asp-action="SignUpForm" asp-route-tourid="@x.TourID">Sign Up</a></td>
+            </tr>
+         }
     </tbody>
 
 </table>

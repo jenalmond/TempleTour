@@ -11,6 +11,5 @@ namespace TempleTour.Models
         public int TourID { get; set; }
         public string TourTime { get; set; }
         public bool Available { get; set; } = true;
-
     }
 }
