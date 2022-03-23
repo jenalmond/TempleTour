@@ -85,8 +85,8 @@ namespace TempleTour.Controllers
         [HttpGet]
         public IActionResult Edit(int groupid)
         {
-            ViewBag.appointments = dbContext.appointments.ToList();
             var appointment = dbContext.responses.Single(x => x.GroupID == groupid);
+            ViewBag.appointments = dbContext.appointments.Where(x => x.TourID == appointment.TourID).ToList();
             return View("SignUpForm", appointment);
         }
 
@@ -108,7 +108,10 @@ namespace TempleTour.Controllers
         [HttpPost]
         public IActionResult Delete(SignUpResponse delete)
         {
-            dbContext.responses.Remove(delete);
+            var response = dbContext.responses.Single(x => x.GroupID == delete.GroupID);
+            Appointment a = dbContext.appointments.Single(x => x.TourID == response.TourID);
+            a.Available = true;
+            dbContext.responses.Remove(response);
             dbContext.SaveChanges();
             return RedirectToAction("Appointments");
         }

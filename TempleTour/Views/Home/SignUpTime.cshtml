@@ -12,6 +12,7 @@
 
         <tr>
             <td>Tour Time</td>
+            <td>Tour Date</td>
             <td>Sign Up</td>
         </tr>
     </thead>
@@ -21,6 +22,8 @@
         {
             <tr>
                 <td>@x.TourTime</td>
+                <td>@x.TourDate</td>
+
 
                 <td><a asp-controller="Home" asp-action="SignUpForm" asp-route-tourid="@x.TourID">Sign Up</a></td>
             </tr>

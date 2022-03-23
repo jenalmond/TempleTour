@@ -10,6 +10,7 @@ namespace TempleTour.Models
         //foreign key relationship to responses
         public int TourID { get; set; }
         public string TourTime { get; set; }
+        public string TourDate { get; set; }
         public bool Available { get; set; } = true;
     }
 }
